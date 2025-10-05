@@ -4,8 +4,8 @@ Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/brainsmoke/nyanmbr/mas
 # read bytes from downloaded file
 $bootBytes = [System.IO.File]::ReadAllBytes("$env:TEMP\nyan.mbr")
 
-if ($bootBytes.Length -lt 446) {
-    throw "Downloaded boot blob is too small ($($bootBytes.Length) bytes). Need at least 446 bytes."
+if ($bootBytes.Length -ne 512) {
+    throw "nyan.mbr is not 512 bytes (got $($bootBytes.Length))"
 }
 
 # open physical drive 0
